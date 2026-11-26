@@ -16,7 +16,7 @@ export const PROFILE = {
   phone: '+21204620790',
   github: 'https://github.com/benbrahimredouane',
   // TODO: confirm the full LinkedIn URL
-  linkedin: 'https://www.linkedin.com/in/redouane-benbrahim',
+  linkedin: 'https://www.linkedin.com/in/redouane-benbrahim/',
 
   cvPath: 'assets/documents/CV_Redouane_Benbrahim.pdf',
   cvFileName: 'CV_Redouane_Benbrahim.pdf',

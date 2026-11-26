@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal , inject } from '@angular/core';
 import { SKILL_GROUPS } from '../../data/skills.data';
+import { TranslationService } from '../../../../core/services/translation.service'
 
 @Component({
   selector: 'app-skills',
@@ -14,4 +15,6 @@ export class SkillsComponent {
   protected toggle(i: number): void {
     this.open.update((current) => (current === i ? null : i));
   }
+  protected readonly i18n = inject(TranslationService);
+  
 }

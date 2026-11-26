@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component,inject } from '@angular/core';
 import { EXPERIENCE } from '../../data/experience.data';
+import { TranslationService } from '../../../../core/services/translation.service'
 
 @Component({
   selector: 'app-experience',
@@ -8,5 +9,6 @@ import { EXPERIENCE } from '../../data/experience.data';
   templateUrl: '/experience.component.html'
 })
 export class ExperienceComponent {
+    protected readonly i18n = inject(TranslationService);
   protected readonly jobs = EXPERIENCE;
 }

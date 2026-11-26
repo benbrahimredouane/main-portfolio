@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { PROFILE } from '../../data/profile.data';
+import { TranslationService } from '../../../../core/services/translation.service'
 
 @Component({
   selector: 'app-contact',
@@ -11,6 +12,7 @@ import { PROFILE } from '../../data/profile.data';
   templateUrl: '/contact.component.html'
 })
 export class ContactComponent {
+    protected readonly i18n = inject(TranslationService);
   private readonly fb = inject(FormBuilder).nonNullable;
   private readonly p = PROFILE;
 

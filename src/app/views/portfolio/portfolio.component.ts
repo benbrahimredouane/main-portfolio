@@ -10,6 +10,7 @@ import { HeroComponent } from './components/hero/hero.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { NAV_LINKS, PROFILE } from './data/profile.data';
+import { TranslationService } from '../../core/services/translation.service'
 
 @Component({
   selector: 'app-portfolio',
@@ -26,9 +27,10 @@ import { NAV_LINKS, PROFILE } from './data/profile.data';
     FooterComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl:'/portfolio.component.html'
+  templateUrl: './portfolio.component.html'
 })
 export class PortfolioComponent implements AfterViewInit {
+    protected readonly i18n = inject(TranslationService);
   private readonly spy = inject(ScrollSpyService);
 
   protected readonly p = PROFILE;

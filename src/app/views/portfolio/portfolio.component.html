@@ -1,11 +1,44 @@
  <app-navbar [links]="links" [brand]="p.firstName" />
     <main>
-      <app-hero />
-      <app-skills />
-      <app-about />
-      <app-projects />
-      <app-experience />
-      <app-education />
-      <app-contact />
+    <!-- Loaded immediately on initial page load -->
+<app-hero />
+<h2>{{ i18n.t().sections.projects }}</h2>
+
+<!-- Loaded when the user scrolls near/into the section -->
+@defer (on viewport) {
+  <app-about />
+} @placeholder {
+  <section id="about" class="section-placeholder" aria-hidden="true"></section>
+}
+
+@defer (on viewport) {
+  <app-experience />
+} @placeholder {
+  <section id="experience" class="section-placeholder" aria-hidden="true"></section>
+}
+
+@defer (on viewport) {
+  <app-skills />
+} @placeholder {
+  <section id="skills" class="section-placeholder" aria-hidden="true"></section>
+}
+
+@defer (on viewport) {
+  <app-projects />
+} @placeholder {
+  <section id="projects" class="section-placeholder" aria-hidden="true"></section>
+}
+
+@defer (on viewport) {
+  <app-education />
+} @placeholder {
+  <section id="education" class="section-placeholder" aria-hidden="true"></section>
+}
+
+@defer (on viewport) {
+  <app-contact />
+} @placeholder {
+  <section id="contact" class="section-placeholder" aria-hidden="true"></section>
+}
     </main>
     <app-footer [name]="p.name" [github]="p.github" [linkedin]="p.linkedin" [email]="p.email" />

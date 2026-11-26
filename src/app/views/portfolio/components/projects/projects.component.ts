@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal , inject } from '@angular/core';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { CategoryId, Project } from '../../data/models';
 import { CATEGORIES, PROJECTS, categoryImage } from '../../data/projects.data';
+import { TranslationService } from '../../../../core/services/translation.service'
 
 type Filter = CategoryId | 'all';
 const PAGE_SIZE = 6;
@@ -14,6 +15,7 @@ const PAGE_SIZE = 6;
   templateUrl: '/projects.component.html'
 })
 export class ProjectsComponent {
+    protected readonly i18n = inject(TranslationService);
   protected readonly categories = CATEGORIES;
   protected readonly total = PROJECTS.length;
   protected readonly counts = CATEGORIES.reduce(
