@@ -20,7 +20,7 @@ export const PROFILE = {
 
   cvPath: 'assets/documents/CV_Redouane_Benbrahim.pdf',
   cvFileName: 'CV_Redouane_Benbrahim.pdf',
-  photo: 'assets/images/profile/profile.png',
+  photo: 'assets/images/profile/profile.png', 
 
   heroChips: ['Java', 'Spring Boot', 'Laravel', 'Angular', 'React', 'Docker'],
   marquee: ['Java', 'Spring Boot', 'Laravel', 'Angular', 'React', 'REST APIs', 'MySQL', 'PostgreSQL', 'Docker', 'Git'],
