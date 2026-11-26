@@ -1,9 +1,7 @@
- <app-navbar [links]="links" [brand]="p.firstName" />
+ <app-navbar [links]="links()" [brand]="p.firstName" />
     <main>
     <!-- Loaded immediately on initial page load -->
 <app-hero />
-<h2>{{ i18n.t().sections.projects }}</h2>
-
 <!-- Loaded when the user scrolls near/into the section -->
 @defer (on viewport) {
   <app-about />

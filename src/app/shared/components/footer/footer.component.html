@@ -1,7 +1,7 @@
 
     <footer class="bg-ink text-cream/70">
       <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-5 py-8 text-sm sm:flex-row">
-        <p>&copy; {{ year }} {{ name() }}. Built with Angular and Tailwind CSS.</p>
+        <p>&copy; {{ year }} {{ name() }}. {{ i18n.t().footer.builtWith }}</p>
 
         <div class="flex items-center gap-3">
           <a [href]="github()" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
@@ -12,11 +12,11 @@
              class="grid size-10 place-items-center rounded-full bg-ink-soft text-cream transition-colors hover:bg-brand hover:text-ink">
             <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
           </a>
-          <a [href]="'mailto:' + email()" aria-label="Email"
+          <a [href]="'mailto:' + email()" [attr.aria-label]="i18n.t().contact.channels.Email"
              class="grid size-10 place-items-center rounded-full bg-ink-soft text-cream transition-colors hover:bg-brand hover:text-ink">
             <i class="fa-solid fa-envelope" aria-hidden="true"></i>
           </a>
-          <a href="#home" aria-label="Back to top"
+          <a href="#home" [attr.aria-label]="i18n.t().footer.backToTop"
              class="grid size-10 place-items-center rounded-full bg-brand text-ink transition-colors hover:bg-cream">
             <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
           </a>

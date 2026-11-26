@@ -6,17 +6,17 @@
             <span class="size-4 rounded-full bg-ink"></span>
             <span class="-ml-1.5 size-4 rounded-full bg-brand"></span>
           </span>
-          My projects
+          {{ i18n.t().projects.eyebrow }}
         </p>
         <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-          Things I've <span class="text-brand">built</span>
+          {{ i18n.t().projects.title }} <span class="text-brand">{{ i18n.t().projects.titleAccent }}</span>
         </h2>
         <p class="mt-3 max-w-xl text-ink/70">
-          Every project links to its source code on GitHub. Filter by technology to find what you're looking for.
+          {{ i18n.t().projects.description }}
         </p>
 
         <!-- Filters -->
-        <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter projects by category">
+        <div class="mt-8 flex flex-wrap gap-2" role="group" [attr.aria-label]="i18n.t().projects.filter">
           <button
             type="button"
             class="inline-flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors"
@@ -24,7 +24,7 @@
             [attr.aria-pressed]="selected() === 'all'"
             (click)="select('all')"
           >
-            All
+            {{ i18n.t().projects.all }}
             <span class="rounded-full bg-brand px-2 py-0.5 text-xs text-ink">{{ total }}</span>
           </button>
 
@@ -37,7 +37,7 @@
               (click)="select(cat.id)"
             >
               <i [class]="cat.icon" aria-hidden="true"></i>
-              {{ cat.label }}
+              {{ i18n.t().projects.categories[cat.id] }}
               <span class="rounded-full bg-brand px-2 py-0.5 text-xs text-ink">{{ counts[cat.id] }}</span>
             </button>
           }
@@ -51,7 +51,7 @@
                 <div class="relative">
                   <img
                     [src]="imageFor(project)"
-                    [alt]="project.title + ' preview'"
+                    [alt]="i18n.t().projects.previewAlt.replace('{title}', project.title)"
                     width="640"
                     height="400"
                     loading="lazy"
@@ -59,13 +59,13 @@
                   />
                   <span class="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-ink px-3 py-1 text-xs font-semibold text-cream">
                     <i [class]="categoryOf(project).icon" class="text-brand" aria-hidden="true"></i>
-                    {{ categoryOf(project).label }}
+                    {{ i18n.t().projects.categories[categoryOf(project).id] }}
                   </span>
                 </div>
 
                 <div class="flex flex-1 flex-col p-5">
                   <h3 class="font-display text-xl font-bold leading-snug">{{ project.title }}</h3>
-                  <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-ink/70">{{ project.description }}</p>
+                  <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-ink/70">{{ i18n.t().projects.descriptions[project.title] }}</p>
 
                   <ul class="mt-4 flex flex-wrap gap-1.5">
                     @for (t of project.tech; track t) {
@@ -78,10 +78,10 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="mt-5 inline-flex items-center gap-2 pt-1 text-sm font-bold transition-colors hover:text-brand-deep sm:mt-auto"
-                    [attr.aria-label]="'View ' + project.title + ' on GitHub'"
+                    [attr.aria-label]="i18n.t().projects.viewProject.replace('{title}', project.title)"
                   >
                     <i class="fa-brands fa-github text-lg" aria-hidden="true"></i>
-                    View on GitHub
+                    {{ i18n.t().projects.viewOnGithub }}
                     <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
                   </a>
                 </div>
@@ -93,7 +93,7 @@
         @if (remaining() > 0) {
           <div class="mt-10 flex justify-center">
             <app-button variant="dark" icon="fa-solid fa-plus" (click)="showMore()">
-              Show more ({{ remaining() }} left)
+              {{ i18n.t().projects.showMore }} ({{ remaining() }} {{ i18n.t().projects.left }})
             </app-button>
           </div>
         }

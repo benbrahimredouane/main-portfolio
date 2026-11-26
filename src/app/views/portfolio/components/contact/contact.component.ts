@@ -19,10 +19,10 @@ export class ContactComponent {
   protected readonly sent = signal(false);
 
   protected readonly channels = [
-    { label: 'Email', value: this.p.email, href: `mailto:${this.p.email}`, icon: 'fa-solid fa-envelope', external: false },
-    { label: 'Phone', value: this.p.phone, href: `tel:${this.p.phone}`, icon: 'fa-solid fa-phone', external: false },
-    { label: 'GitHub', value: 'benbrahimredouane', href: this.p.github, icon: 'fa-brands fa-github', external: true },
-    { label: 'LinkedIn', value: 'redouane-benbrahim', href: this.p.linkedin, icon: 'fa-brands fa-linkedin-in', external: true },
+    { key: 'Email' as const, value: this.p.email, href: `mailto:${this.p.email}`, icon: 'fa-solid fa-envelope', external: false },
+    { key: 'Phone' as const, value: this.p.phone, href: `tel:${this.p.phone}`, icon: 'fa-solid fa-phone', external: false },
+    { key: 'GitHub' as const, value: 'benbrahimredouane', href: this.p.github, icon: 'fa-brands fa-github', external: true },
+    { key: 'LinkedIn' as const, value: 'redouane-benbrahim', href: this.p.linkedin, icon: 'fa-brands fa-linkedin-in', external: true },
   ];
 
   protected readonly form = this.fb.group({
@@ -42,8 +42,8 @@ export class ContactComponent {
       return;
     }
     const { name, email, message } = this.form.getRawValue();
-    const subject = encodeURIComponent(`Portfolio message from ${name}`);
-    const body = encodeURIComponent(`${message}\n\nFrom: ${name} (${email})`);
+    const subject = encodeURIComponent(this.i18n.t().contact.emailSubject.replace('{name}', name));
+    const body = encodeURIComponent(`${message}\n\n${this.i18n.t().contact.emailFrom}: ${name} (${email})`);
     window.location.href = `mailto:${this.p.email}?subject=${subject}&body=${body}`;
     this.sent.set(true);
   }

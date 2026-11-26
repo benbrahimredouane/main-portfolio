@@ -4,13 +4,13 @@
         <div class="text-center">
           <p class="inline-flex items-center gap-2 rounded-full bg-paper px-4 py-2 text-sm font-semibold shadow-sm ring-1 ring-ink/5">
             <i class="fa-solid fa-code text-brand" aria-hidden="true"></i>
-            {{ p.role }}, {{ p.specialty }}
+            {{ i18n.t().hero.role }}, {{ i18n.t().profile.specialty }}
           </p>
 
           <h1 class="mt-5 font-display text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-            I'm <span class="text-brand">{{ p.name }}</span>
+            {{ i18n.t().hero.intro }} <span class="text-brand">{{ p.name }}</span>
           </h1>
-          <p class="mt-3 text-lg text-ink/70">{{ p.role }} based in {{ p.location }}</p>
+          <p class="mt-3 text-lg text-ink/70">{{ i18n.t().hero.role }} {{ i18n.t().hero.basedIn }} {{ i18n.t().profile.location }}</p>
         </div>
 
         <div class="mt-10 grid items-end gap-10 lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
@@ -19,21 +19,21 @@
             <div class="mx-auto h-[380px] w-[290px] rounded-t-full bg-brand p-3 sm:h-[450px] sm:w-[340px]">
               <img
                 [src]="p.photo"
-                [alt]="'Portrait of ' + p.name"
+                [alt]="i18n.t().hero.portraitAlt.replace('{name}', p.name)"
                 width="320"
                 height="420"
                 class="size-full rounded-t-full object-cover object-top"
               />
             </div>
             <div class="relative z-10 -mt-7 flex w-fit flex-wrap justify-center gap-1.5 rounded-full bg-paper p-1.5 shadow-xl shadow-ink/10 mx-auto">
-              <app-button variant="primary" href="#projects" icon="fa-solid fa-arrow-down">Projects</app-button>
-              <app-button variant="outline" [href]="p.cvPath" [download]="p.cvFileName" icon="fa-solid fa-download">Download CV</app-button>
+              <app-button variant="primary" href="#projects" icon="fa-solid fa-arrow-down">{{ i18n.t().hero.projects }}</app-button>
+              <app-button variant="outline" [href]="p.cvPath" [download]="p.cvFileName" icon="fa-solid fa-download">{{ i18n.t().hero.downloadCv }}</app-button>
             </div>
           </div>
 
           <!-- Left: socials + proof -->
           <div class="order-2 text-center lg:order-1 lg:pb-24 lg:text-left">
-            <p class="text-sm font-semibold text-ink/60">Follow me on</p>
+            <p class="text-sm font-semibold text-ink/60">{{ i18n.t().hero.follow }}</p>
             <div class="mt-3 flex justify-center gap-3 lg:justify-start">
               <a [href]="p.github" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
                  class="grid size-11 place-items-center rounded-full bg-paper text-lg shadow-sm ring-1 ring-ink/5 transition-colors hover:bg-ink hover:text-brand">
@@ -43,20 +43,20 @@
                  class="grid size-11 place-items-center rounded-full bg-paper text-lg shadow-sm ring-1 ring-ink/5 transition-colors hover:bg-ink hover:text-brand">
                 <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
               </a>
-              <a [href]="'mailto:' + p.email" aria-label="Email"
+              <a [href]="'mailto:' + p.email" [attr.aria-label]="i18n.t().contact.channels.Email"
                  class="grid size-11 place-items-center rounded-full bg-paper text-lg shadow-sm ring-1 ring-ink/5 transition-colors hover:bg-ink hover:text-brand">
                 <i class="fa-solid fa-envelope" aria-hidden="true"></i>
               </a>
             </div>
 
-            <p class="mt-8 font-display text-3xl font-extrabold text-brand">{{ projectCount }} projects</p>
-            <p class="text-sm text-ink/60">published on GitHub</p>
+            <p class="mt-8 font-display text-3xl font-extrabold text-brand">{{ projectCount }} {{ i18n.t().hero.projectCount }}</p>
+            <p class="text-sm text-ink/60">{{ i18n.t().hero.published }}</p>
           </div>
 
           <!-- Right: statement + chips -->
           <div class="order-3 text-center lg:pb-24 lg:text-right">
             <i class="fa-solid fa-quote-right text-3xl text-brand" aria-hidden="true"></i>
-            <p class="mx-auto mt-3 max-w-xs text-ink/75 lg:ml-auto lg:mr-0">{{ p.tagline }}</p>
+            <p class="mx-auto mt-3 max-w-xs text-ink/75 lg:ml-auto lg:mr-0">{{ i18n.t().profile.tagline }}</p>
             <ul class="mt-6 flex flex-wrap justify-center gap-2 lg:justify-end">
               @for (chip of p.heroChips; track chip; let i = $index) {
                 <li

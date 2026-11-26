@@ -5,14 +5,14 @@
           <div class="rounded-[2.5rem] bg-brand p-4 sm:p-5">
             <img
               [src]="p.photo"
-              [alt]="'Portrait of ' + p.name"
+              [alt]="i18n.t().hero.portraitAlt.replace('{name}', p.name)"
               width="400"
               height="480"
               loading="lazy"
               class="aspect-[4/5] w-full rounded-[2rem] object-cover object-top"
             />
-            <ul class="mt-5 flex flex-wrap justify-center gap-2 pb-1" aria-label="Soft skills">
-              @for (skill of p.softSkills; track skill; let i = $index) {
+            <ul class="mt-5 flex flex-wrap justify-center gap-2 pb-1" [attr.aria-label]="i18n.t().about.eyebrow">
+              @for (skill of i18n.t().about.softSkills; track skill; let i = $index) {
                 <li
                   class="rounded-full px-4 py-2 text-sm font-bold shadow-md"
                   [class]="i % 2 === 0 ? 'rotate-2 bg-ink text-brand' : '-rotate-2 bg-paper text-ink'"
@@ -31,29 +31,29 @@
               <span class="size-4 rounded-full bg-cream"></span>
               <span class="-ml-1.5 size-4 rounded-full bg-brand"></span>
             </span>
-            About me
+            {{ i18n.t().about.eyebrow }}
           </p>
           <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Who is <span class="text-brand">{{ p.firstName }}</span>?
+            {{ i18n.t().about.title }} <span class="text-brand">{{ p.firstName }}</span>?
           </h2>
 
           <div class="mt-6 max-w-xl space-y-4 leading-relaxed text-cream/75">
-            <p>{{ p.summary }}</p>
-            <p>{{ p.training }}</p>
+            <p>{{ i18n.t().profile.summary }}</p>
+            <p>{{ i18n.t().profile.training }}</p>
           </div>
 
-          <h3 class="mt-8 font-display text-lg font-bold">Languages</h3>
+          <h3 class="mt-8 font-display text-lg font-bold">{{ i18n.t().about.languages }}</h3>
           <ul class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
             @for (lang of p.spokenLanguages; track lang.name) {
               <li class="rounded-2xl bg-ink-soft px-4 py-3">
                 <p class="font-semibold">{{ lang.name }}</p>
-                <p class="text-xs text-brand">{{ lang.level }}</p>
+                <p class="text-xs text-brand">{{ i18n.t().about.levels[lang.level] }}</p>
               </li>
             }
           </ul>
 
           <div class="mt-9 flex flex-wrap items-center gap-6">
-            <app-button variant="primary" [href]="p.cvPath" [download]="p.cvFileName" icon="fa-solid fa-download">Download CV</app-button>
+            <app-button variant="primary" [href]="p.cvPath" [download]="p.cvFileName" icon="fa-solid fa-download">{{ i18n.t().hero.downloadCv }}</app-button>
             <span class="font-script text-4xl text-cream/80" aria-hidden="true">{{ p.name }}</span>
           </div>
         </div>

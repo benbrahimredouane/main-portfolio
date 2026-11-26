@@ -8,17 +8,17 @@
               <span class="size-4 rounded-full bg-cream"></span>
               <span class="-ml-1.5 size-4 rounded-full bg-brand"></span>
             </span>
-            Contact
+            {{ i18n.t().contact.eyebrow }}
           </p>
           <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Have a project in mind? <span class="text-brand">Let's talk.</span>
+            {{ i18n.t().contact.title }} <span class="text-brand">{{ i18n.t().contact.titleAccent }}</span>
           </h2>
           <p class="mt-4 max-w-md text-cream/70">
-            I'm open to internships and junior full-stack roles. Send a message or reach out directly.
+            {{ i18n.t().contact.description }}
           </p>
 
           <ul class="mt-8 grid gap-3">
-            @for (c of channels; track c.label) {
+            @for (c of channels; track c.key) {
               <li>
                 <a
                   [href]="c.href"
@@ -30,7 +30,7 @@
                     <i [class]="c.icon" aria-hidden="true"></i>
                   </span>
                   <span class="min-w-0">
-                    <span class="block text-xs opacity-70">{{ c.label }}</span>
+                    <span class="block text-xs opacity-70">{{ i18n.t().contact.channels[c.key] }}</span>
                     <span class="block truncate font-semibold">{{ c.value }}</span>
                   </span>
                 </a>
@@ -45,43 +45,43 @@
           (ngSubmit)="submit()"
           novalidate
           class="rounded-3xl bg-paper p-6 text-ink sm:p-8"
-          aria-label="Contact form"
+          [attr.aria-label]="i18n.t().contact.formLabel"
         >
           <div class="grid gap-5">
             <div>
-              <label for="c-name" class="text-sm font-semibold">Name</label>
+              <label for="c-name" class="text-sm font-semibold">{{ i18n.t().contact.nameLabel }}</label>
               <input id="c-name" type="text" formControlName="name" autocomplete="name"
                      class="mt-1.5 w-full rounded-2xl border border-ink/15 bg-cream px-4 py-3 outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/40"
                      [attr.aria-invalid]="invalid('name')" aria-describedby="c-name-err" />
               @if (invalid('name')) {
-                <p id="c-name-err" class="mt-1.5 text-sm text-red-700">Please enter your name.</p>
+                <p id="c-name-err" class="mt-1.5 text-sm text-red-700">{{ i18n.t().contact.nameError }}</p>
               }
             </div>
 
             <div>
-              <label for="c-email" class="text-sm font-semibold">Email</label>
+              <label for="c-email" class="text-sm font-semibold">{{ i18n.t().contact.emailLabel }}</label>
               <input id="c-email" type="email" formControlName="email" autocomplete="email"
                      class="mt-1.5 w-full rounded-2xl border border-ink/15 bg-cream px-4 py-3 outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/40"
                      [attr.aria-invalid]="invalid('email')" aria-describedby="c-email-err" />
               @if (invalid('email')) {
-                <p id="c-email-err" class="mt-1.5 text-sm text-red-700">Enter a valid email address, like name&#64;example.com.</p>
+                <p id="c-email-err" class="mt-1.5 text-sm text-red-700">{{ i18n.t().contact.emailError }}</p>
               }
             </div>
 
             <div>
-              <label for="c-message" class="text-sm font-semibold">Message</label>
+              <label for="c-message" class="text-sm font-semibold">{{ i18n.t().contact.messageLabel }}</label>
               <textarea id="c-message" rows="5" formControlName="message"
                         class="mt-1.5 w-full resize-y rounded-2xl border border-ink/15 bg-cream px-4 py-3 outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/40"
                         [attr.aria-invalid]="invalid('message')" aria-describedby="c-message-err"></textarea>
               @if (invalid('message')) {
-                <p id="c-message-err" class="mt-1.5 text-sm text-red-700">Write at least 10 characters.</p>
+                <p id="c-message-err" class="mt-1.5 text-sm text-red-700">{{ i18n.t().contact.messageError }}</p>
               }
             </div>
 
             <div>
-              <app-button variant="dark" type="submit" icon="fa-solid fa-paper-plane">Send message</app-button>
+              <app-button variant="dark" type="submit" icon="fa-solid fa-paper-plane">{{ i18n.t().contact.sendButton }}</app-button>
               @if (sent()) {
-                <p class="mt-3 text-sm text-ink/70" role="status">Your email app should open with the message ready to send.</p>
+                <p class="mt-3 text-sm text-ink/70" role="status">{{ i18n.t().contact.sentSuccess }}</p>
               }
             </div>
           </div>
