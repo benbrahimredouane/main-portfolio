@@ -26,19 +26,7 @@ import { NAV_LINKS, PROFILE } from './data/profile.data';
     FooterComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <app-navbar [links]="links" [brand]="p.firstName" />
-    <main>
-      <app-hero />
-      <app-skills />
-      <app-about />
-      <app-projects />
-      <app-experience />
-      <app-education />
-      <app-contact />
-    </main>
-    <app-footer [name]="p.name" [github]="p.github" [linkedin]="p.linkedin" [email]="p.email" />
-  `,
+  templateUrl:'/portfolio.component.html'
 })
 export class PortfolioComponent implements AfterViewInit {
   private readonly spy = inject(ScrollSpyService);

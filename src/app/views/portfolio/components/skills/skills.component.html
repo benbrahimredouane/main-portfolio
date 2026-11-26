@@ -1,0 +1,69 @@
+
+    <section id="skills" class="bg-cream py-20 sm:py-28">
+      <div class="mx-auto max-w-4xl px-5">
+        <p class="flex items-center gap-2 text-sm font-semibold">
+          <span class="flex" aria-hidden="true">
+            <span class="size-4 rounded-full bg-ink"></span>
+            <span class="-ml-1.5 size-4 rounded-full bg-brand"></span>
+          </span>
+          My skills
+        </p>
+        <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
+          The stack I <span class="text-brand">build with</span>
+        </h2>
+
+        <ul class="mt-10 grid gap-3">
+          @for (group of groups; track group.title; let i = $index) {
+            <li
+              class="overflow-hidden rounded-3xl transition-colors duration-300"
+              [class]="open() === i ? 'bg-ink text-cream' : 'bg-paper text-ink'"
+            >
+              <h3>
+                <button
+                  type="button"
+                  class="flex w-full cursor-pointer items-center gap-4 px-5 py-5 text-left sm:px-7"
+                  [attr.aria-expanded]="open() === i"
+                  [attr.aria-controls]="'skill-panel-' + i"
+                  (click)="toggle(i)"
+                >
+                  <span
+                    class="grid size-12 shrink-0 place-items-center rounded-2xl text-lg text-ink"
+                    [class]="open() === i ? 'bg-brand' : 'bg-cream'"
+                  >
+                    <i [class]="group.icon" aria-hidden="true"></i>
+                  </span>
+                  <span class="flex-1 font-display text-xl font-bold sm:text-2xl">{{ group.title }}</span>
+                  <span class="hidden text-sm opacity-60 sm:inline">{{ group.items.length }} skills</span>
+                  <span
+                    class="grid size-9 shrink-0 place-items-center rounded-full bg-brand text-ink transition-transform duration-300"
+                    [class.rotate-45]="open() === i"
+                  >
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </h3>
+
+              <div
+                [id]="'skill-panel-' + i"
+                class="grid transition-[grid-template-rows] duration-300"
+                [class]="open() === i ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'"
+              >
+                <div class="overflow-hidden">
+                  <div class="px-5 pb-6 sm:pl-[6.25rem] sm:pr-7">
+                    <p class="max-w-prose text-sm leading-relaxed text-cream/70">{{ group.blurb }}</p>
+                    <ul class="mt-4 flex flex-wrap gap-2">
+                      @for (item of group.items; track item.name) {
+                        <li class="inline-flex items-center gap-2 rounded-full border border-cream/20 px-3.5 py-1.5 text-sm">
+                          <i [class]="item.icon" class="text-brand" aria-hidden="true"></i>
+                          {{ item.name }}
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+    </section>

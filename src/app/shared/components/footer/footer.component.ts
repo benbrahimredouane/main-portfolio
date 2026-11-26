@@ -4,32 +4,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   selector: 'app-footer',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <footer class="bg-ink text-cream/70">
-      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-5 py-8 text-sm sm:flex-row">
-        <p>&copy; {{ year }} {{ name() }}. Built with Angular and Tailwind CSS.</p>
-
-        <div class="flex items-center gap-3">
-          <a [href]="github()" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-             class="grid size-10 place-items-center rounded-full bg-ink-soft text-cream transition-colors hover:bg-brand hover:text-ink">
-            <i class="fa-brands fa-github" aria-hidden="true"></i>
-          </a>
-          <a [href]="linkedin()" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-             class="grid size-10 place-items-center rounded-full bg-ink-soft text-cream transition-colors hover:bg-brand hover:text-ink">
-            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-          </a>
-          <a [href]="'mailto:' + email()" aria-label="Email"
-             class="grid size-10 place-items-center rounded-full bg-ink-soft text-cream transition-colors hover:bg-brand hover:text-ink">
-            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-          </a>
-          <a href="#home" aria-label="Back to top"
-             class="grid size-10 place-items-center rounded-full bg-brand text-ink transition-colors hover:bg-cream">
-            <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </footer>
-  `,
+  templateUrl: '/footer.component.html'
 })
 export class FooterComponent {
   readonly name = input.required<string>();

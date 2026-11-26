@@ -7,69 +7,7 @@ import { PROFILE } from '../../data/profile.data';
   standalone: true,
   imports: [ButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <section id="about" class="border-t-4 border-brand bg-ink py-20 text-cream sm:py-28">
-      <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-2">
-        <!-- Photo panel with soft-skill stickers -->
-        <div class="mx-auto w-full max-w-md">
-          <div class="rounded-[2.5rem] bg-brand p-4 sm:p-5">
-            <img
-              [src]="p.photo"
-              [alt]="'Portrait of ' + p.name"
-              width="400"
-              height="480"
-              loading="lazy"
-              class="aspect-[4/5] w-full rounded-[2rem] object-cover object-top"
-            />
-            <ul class="mt-5 flex flex-wrap justify-center gap-2 pb-1" aria-label="Soft skills">
-              @for (skill of p.softSkills; track skill; let i = $index) {
-                <li
-                  class="rounded-full px-4 py-2 text-sm font-bold shadow-md"
-                  [class]="i % 2 === 0 ? 'rotate-2 bg-ink text-brand' : '-rotate-2 bg-paper text-ink'"
-                >
-                  {{ skill }}
-                </li>
-              }
-            </ul>
-          </div>
-        </div>
-
-        <!-- Text -->
-        <div>
-          <p class="flex items-center gap-2 text-sm font-semibold">
-            <span class="flex" aria-hidden="true">
-              <span class="size-4 rounded-full bg-cream"></span>
-              <span class="-ml-1.5 size-4 rounded-full bg-brand"></span>
-            </span>
-            About me
-          </p>
-          <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Who is <span class="text-brand">{{ p.firstName }}</span>?
-          </h2>
-
-          <div class="mt-6 max-w-xl space-y-4 leading-relaxed text-cream/75">
-            <p>{{ p.summary }}</p>
-            <p>{{ p.training }}</p>
-          </div>
-
-          <h3 class="mt-8 font-display text-lg font-bold">Languages</h3>
-          <ul class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            @for (lang of p.spokenLanguages; track lang.name) {
-              <li class="rounded-2xl bg-ink-soft px-4 py-3">
-                <p class="font-semibold">{{ lang.name }}</p>
-                <p class="text-xs text-brand">{{ lang.level }}</p>
-              </li>
-            }
-          </ul>
-
-          <div class="mt-9 flex flex-wrap items-center gap-6">
-            <app-button variant="primary" [href]="p.cvPath" [download]="p.cvFileName" icon="fa-solid fa-download">Download CV</app-button>
-            <span class="font-script text-4xl text-cream/80" aria-hidden="true">{{ p.name }}</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  `,
+  templateUrl:  '/about.component.html'
 })
 export class AboutComponent {
   protected readonly p = PROFILE;

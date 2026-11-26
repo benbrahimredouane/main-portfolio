@@ -32,35 +32,7 @@ const ICON_BUBBLE: Record<ButtonVariant, string> = {
   standalone: true,
   imports: [NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <ng-template #content>
-      <span><ng-content /></span>
-      @if (icon()) {
-        <span
-          class="grid size-7 place-items-center rounded-full text-xs transition-transform duration-200 group-hover:scale-110"
-          [class]="bubble()"
-        >
-          <i [class]="icon()" aria-hidden="true"></i>
-        </span>
-      }
-    </ng-template>
-
-    @if (href()) {
-      <a
-        [href]="href()"
-        [class]="classes()"
-        [attr.target]="external() ? '_blank' : null"
-        [attr.rel]="external() ? 'noopener noreferrer' : null"
-        [attr.download]="download() || null"
-      >
-        <ng-container *ngTemplateOutlet="content" />
-      </a>
-    } @else {
-      <button [type]="type()" [disabled]="disabled()" [class]="classes()">
-        <ng-container *ngTemplateOutlet="content" />
-      </button>
-    }
-  `,
+  templateUrl: '/button.component.html'
 })
 export class ButtonComponent {
   readonly variant = input<ButtonVariant>('primary');

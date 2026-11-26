@@ -12,67 +12,7 @@ export interface NavLink {
   standalone: true,
   imports: [ButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <header class="fixed inset-x-0 top-3 z-50 px-3 sm:top-4 sm:px-5">
-      <nav
-        class="mx-auto flex max-w-6xl items-center justify-between rounded-full bg-ink py-2 pl-2.5 pr-2.5 text-cream shadow-xl shadow-ink/20"
-        aria-label="Main navigation"
-      >
-        <a href="#home" class="flex items-center gap-2.5" aria-label="Back to top">
-          <span class="grid size-10 place-items-center rounded-full bg-brand font-display text-lg font-extrabold text-ink">R</span>
-          <span class="font-display text-lg font-bold tracking-tight">{{ brand() }}<span class="text-brand">.</span></span>
-        </a>
-
-        <ul class="hidden items-center gap-7 text-sm lg:flex">
-          @for (link of links(); track link.id) {
-            <li>
-              <a
-                [href]="'#' + link.id"
-                class="border-b-2 pb-0.5 transition-colors hover:text-brand"
-                [class]="spy.activeId() === link.id ? 'border-brand text-brand' : 'border-transparent'"
-                [attr.aria-current]="spy.activeId() === link.id ? 'true' : null"
-              >
-                {{ link.label }}
-              </a>
-            </li>
-          }
-        </ul>
-
-        <div class="flex items-center gap-2">
-          <app-button variant="light" href="#contact" class="hidden sm:block">Let's talk</app-button>
-          <button
-            type="button"
-            class="grid size-10 place-items-center rounded-full bg-ink-soft text-cream transition-colors hover:bg-brand hover:text-ink lg:hidden"
-            [attr.aria-expanded]="open()"
-            aria-controls="mobile-menu"
-            aria-label="Toggle menu"
-            (click)="open.set(!open())"
-          >
-            <i [class]="open() ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'" aria-hidden="true"></i>
-          </button>
-        </div>
-      </nav>
-
-      @if (open()) {
-        <div id="mobile-menu" class="mx-auto mt-2 max-w-6xl rounded-3xl bg-ink p-3 text-cream shadow-xl shadow-ink/20 lg:hidden">
-          <ul class="grid gap-1">
-            @for (link of links(); track link.id) {
-              <li>
-                <a
-                  [href]="'#' + link.id"
-                  class="block rounded-2xl px-4 py-3 font-medium transition-colors hover:bg-ink-soft"
-                  [class]="spy.activeId() === link.id ? 'bg-ink-soft text-brand' : ''"
-                  (click)="open.set(false)"
-                >
-                  {{ link.label }}
-                </a>
-              </li>
-            }
-          </ul>
-        </div>
-      }
-    </header>
-  `,
+  templateUrl: '/navbar.component.html'
 })
 export class NavbarComponent {
   protected readonly spy = inject(ScrollSpyService);
