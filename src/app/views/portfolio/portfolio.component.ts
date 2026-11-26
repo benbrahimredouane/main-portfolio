@@ -38,8 +38,8 @@ export class PortfolioComponent implements AfterViewInit {
     const nav = this.i18n.t().nav;
     return [
       { id: 'home', label: nav.home },
-      { id: 'skills', label: nav.skills },
       { id: 'about', label: nav.about },
+      { id: 'skills', label: nav.skills },
       { id: 'projects', label: nav.projects },
       { id: 'experience', label: nav.experience },
       { id: 'education', label: nav.education },

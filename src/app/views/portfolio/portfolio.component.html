@@ -10,12 +10,6 @@
 }
 
 @defer (on viewport) {
-  <app-experience />
-} @placeholder {
-  <section id="experience" class="section-placeholder" aria-hidden="true"></section>
-}
-
-@defer (on viewport) {
   <app-skills />
 } @placeholder {
   <section id="skills" class="section-placeholder" aria-hidden="true"></section>
@@ -25,6 +19,12 @@
   <app-projects />
 } @placeholder {
   <section id="projects" class="section-placeholder" aria-hidden="true"></section>
+}
+
+@defer (on viewport) {
+  <app-experience />
+} @placeholder {
+  <section id="experience" class="section-placeholder" aria-hidden="true"></section>
 }
 
 @defer (on viewport) {

@@ -86,9 +86,11 @@ export interface Translations {
     nameError: string;
     emailError: string;
     messageError: string;
+    sending: string;
     sentSuccess: string;
-    emailSubject: string;
-    emailFrom: string;
+    sendError: string;
+    rateLimitReached: string;
+    rateLimitStorageError: string;
     channels: Record<'Email' | 'Phone' | 'GitHub' | 'LinkedIn', string>;
   };
   footer: {
@@ -241,9 +243,11 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       nameError: 'Please enter your name.',
       emailError: 'Enter a valid email address, like name@example.com.',
       messageError: 'Write at least 10 characters.',
-      sentSuccess: 'Your email app should open with the message ready to send.',
-      emailSubject: 'Portfolio message from {name}',
-      emailFrom: 'From',
+      sending: 'Sending...',
+      sentSuccess: 'Your message was sent successfully.',
+      sendError: 'Could not send your message. Please try again later.',
+      rateLimitReached: 'You have reached the limit of 2 messages per email address in 24 hours.',
+      rateLimitStorageError: 'The sending limit could not be enforced in this browser. Please enable local storage and try again.',
       channels: { Email: 'Email', Phone: 'Phone', GitHub: 'GitHub', LinkedIn: 'LinkedIn' },
     },
     footer: {
@@ -394,9 +398,11 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       nameError: 'Veuillez saisir votre nom.',
       emailError: 'Saisissez une adresse e-mail valide, par exemple nom@exemple.com.',
       messageError: 'Écrivez au moins 10 caractères.',
-      sentSuccess: 'Votre application de messagerie devrait s’ouvrir avec le message prêt à être envoyé.',
-      emailSubject: 'Message depuis le portfolio de {name}',
-      emailFrom: 'De',
+      sending: 'Envoi en cours…',
+      sentSuccess: 'Votre message a été envoyé avec succès.',
+      sendError: 'Impossible d’envoyer votre message. Veuillez réessayer plus tard.',
+      rateLimitReached: 'Vous avez atteint la limite de 2 messages par adresse e-mail sur 24 heures.',
+      rateLimitStorageError: 'La limite d’envoi ne peut pas être appliquée dans ce navigateur. Activez le stockage local puis réessayez.',
       channels: { Email: 'E-mail', Phone: 'Téléphone', GitHub: 'GitHub', LinkedIn: 'LinkedIn' },
     },
     footer: {
