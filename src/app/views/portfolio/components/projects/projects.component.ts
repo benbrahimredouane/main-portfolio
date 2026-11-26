@@ -12,7 +12,8 @@ const PAGE_SIZE = 6;
   standalone: true,
   imports: [ButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: '/projects.component.html'
+  templateUrl: '/projects.component.html',
+  styleUrl: './projects.component.css',
 })
 export class ProjectsComponent {
     protected readonly i18n = inject(TranslationService);
@@ -47,5 +48,33 @@ export class ProjectsComponent {
 
   protected categoryOf(p: Project) {
     return CATEGORIES.find((c) => c.id === p.category)!;
+  }
+
+  protected updateCardPointer(event: PointerEvent): void {
+    if (event.pointerType === 'touch') return;
+
+    const card = event.currentTarget;
+    if (!(card instanceof HTMLElement)) return;
+
+    const bounds = card.getBoundingClientRect();
+    if (bounds.width === 0 || bounds.height === 0) return;
+
+    const x = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+    const y = Math.max(0, Math.min(1, (event.clientY - bounds.top) / bounds.height));
+
+    card.style.setProperty('--pointer-x', `${x * 100}%`);
+    card.style.setProperty('--pointer-y', `${y * 100}%`);
+    card.style.setProperty('--rotate-x', `${(0.5 - y) * 7}deg`);
+    card.style.setProperty('--rotate-y', `${(x - 0.5) * 7}deg`);
+  }
+
+  protected resetCardPointer(event: PointerEvent): void {
+    const card = event.currentTarget;
+    if (!(card instanceof HTMLElement)) return;
+
+    card.style.setProperty('--pointer-x', '50%');
+    card.style.setProperty('--pointer-y', '50%');
+    card.style.setProperty('--rotate-x', '0deg');
+    card.style.setProperty('--rotate-y', '0deg');
   }
 }

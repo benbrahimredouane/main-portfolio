@@ -1,0 +1,52 @@
+.project-card {
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  position: relative;
+  transform: perspective(900px) rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+  transform-style: preserve-3d;
+  transition:
+    transform 180ms cubic-bezier(0.2, 0.7, 0.3, 1),
+    box-shadow 250ms ease;
+}
+
+.project-card::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle at var(--pointer-x) var(--pointer-y),
+      rgb(255 179 44 / 22%),
+      transparent 42%
+    ),
+    linear-gradient(135deg, rgb(255 255 255 / 8%), transparent 45%);
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  box-shadow: 0 22px 48px -28px rgb(31 23 17 / 55%);
+  will-change: transform;
+}
+
+.project-card:hover::before,
+.project-card:focus-within::before {
+  opacity: 1;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .project-card {
+    transform: none;
+    transition: none;
+  }
+
+  .project-card::before {
+    display: none;
+  }
+}

@@ -47,7 +47,11 @@
         <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite">
           @for (project of visible(); track project.repoUrl) {
             <li>
-              <article class="flex h-full flex-col overflow-hidden rounded-3xl bg-paper ring-1 ring-ink/5">
+              <article
+                class="project-card flex h-full flex-col overflow-hidden rounded-3xl bg-paper ring-1 ring-ink/5"
+                (pointermove)="updateCardPointer($event)"
+                (pointerleave)="resetCardPointer($event)"
+              >
                 <div class="relative">
                   <img
                     [src]="imageFor(project)"
