@@ -11,3 +11,18 @@
   --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
   --font-script: 'Caveat', cursive;
 }
+
+html[data-theme="dark"] {
+  --color-cream: #f3f4f6;
+  --color-paper: #1c2229;
+  --color-ink: #f3f4f6;
+  --color-ink-soft: #2a3038;
+  --color-brand: #ffb32c;
+  --color-brand-deep: #f0a000;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] .bg-cream,
+html[data-theme="dark"] .bg-ink {
+  background-color: #121417;
+}

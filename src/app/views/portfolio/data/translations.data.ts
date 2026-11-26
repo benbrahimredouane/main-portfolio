@@ -14,6 +14,8 @@ export interface Translations {
     contact: string;
     switchLang: string;
     switchLanguage: string;
+    switchToDarkMode: string;
+    switchToLightMode: string;
     talk: string;
     menu: string;
   };
@@ -115,6 +117,8 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       contact: 'Contact',
       switchLang: 'FR',
       switchLanguage: 'Switch to French',
+      switchToDarkMode: 'Switch to dark mode',
+      switchToLightMode: 'Switch to light mode',
       talk: "Let's talk",
       menu: 'Toggle menu',
     },
@@ -266,6 +270,8 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       contact: 'Contact',
       switchLang: 'EN',
       switchLanguage: 'Passer en anglais',
+      switchToDarkMode: 'Activer le mode sombre',
+      switchToLightMode: 'Activer le mode clair',
       talk: 'Me contacter',
       menu: 'Ouvrir ou fermer le menu',
     },

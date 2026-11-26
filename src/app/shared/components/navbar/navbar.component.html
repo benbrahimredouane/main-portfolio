@@ -1,9 +1,9 @@
 <header class="fixed inset-x-0 top-3 z-50 px-3 sm:top-4 sm:px-5">
       <nav
-        class="mx-auto flex max-w-6xl items-center justify-between rounded-full bg-ink py-2 pl-2.5 pr-2.5 text-cream shadow-xl shadow-ink/20"
+        class="mx-auto flex max-w-6xl items-center justify-between gap-2 rounded-full bg-ink py-2 pl-2.5 pr-2.5 text-cream shadow-xl shadow-ink/20"
         [attr.aria-label]="i18n.t().nav.mainNavigation"
       >
-        <a href="#home" class="flex items-center gap-2.5" [attr.aria-label]="i18n.t().footer.backToTop">
+        <a href="#home" class="flex shrink-0 items-center gap-2.5" [attr.aria-label]="i18n.t().footer.backToTop">
           <span class="grid size-10 place-items-center rounded-full bg-brand font-display text-lg font-extrabold text-ink">R</span>
           <span class="font-display text-lg font-bold tracking-tight">{{ brand() }}<span class="text-brand">.</span></span>
         </a>
@@ -22,19 +22,33 @@
             </li>
           }
         </ul>
-        <button
-  type="button"
-  (click)="i18n.toggleLang()"
-  [attr.aria-label]="i18n.t().nav.switchLanguage"
->
-  {{ i18n.t().nav.switchLang }}
-</button>
-
-        <div class="flex items-center gap-2">
+        <div class="ml-auto flex shrink-0 items-center gap-1 sm:gap-2 lg:ml-0">
+          <div class="flex shrink-0 items-center gap-1">
+            <button
+              type="button"
+              class="rounded-full px-3 py-2 text-sm font-bold text-cream transition-colors hover:bg-brand hover:text-ink"
+              (click)="i18n.toggleLang()"
+              [attr.aria-label]="i18n.t().nav.switchLanguage"
+            >
+              {{ i18n.t().nav.switchLang }}
+            </button>
+            <button
+              type="button"
+              class="grid size-10 shrink-0 place-items-center rounded-full bg-ink-soft text-cream transition-colors hover:bg-brand hover:text-ink"
+              (click)="themeService.toggleTheme()"
+              [attr.aria-label]="themeService.theme() === 'light' ? i18n.t().nav.switchToDarkMode : i18n.t().nav.switchToLightMode"
+              [attr.aria-pressed]="themeService.theme() === 'dark'"
+            >
+              <i
+                [class]="themeService.theme() === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'"
+                aria-hidden="true"
+              ></i>
+            </button>
+          </div>
           <app-button variant="light" href="#contact" class="hidden sm:block">{{ i18n.t().nav.talk }}</app-button>
           <button
             type="button"
-            class="grid size-10 place-items-center rounded-full bg-ink-soft text-cream transition-colors hover:bg-brand hover:text-ink lg:hidden"
+            class="grid size-10 shrink-0 place-items-center rounded-full bg-ink-soft text-cream transition-colors hover:bg-brand hover:text-ink lg:hidden"
             [attr.aria-expanded]="open()"
             aria-controls="mobile-menu"
             [attr.aria-label]="i18n.t().nav.menu"

@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angu
 import { ScrollSpyService } from '../../../core/services/scroll-spy.service';
 import { ButtonComponent } from '../button/button.component';
 import { TranslationService } from '../../../core/services/translation.service';
+import { ThemeService } from '../../../core/services/theme.service';
 
 export interface NavLink {
   id: string;
@@ -17,6 +18,7 @@ export interface NavLink {
 })
 export class NavbarComponent {
   protected readonly spy = inject(ScrollSpyService);
+  protected readonly themeService = inject(ThemeService);
 
   readonly links = input.required<NavLink[]>();
   readonly brand = input('Redouane');
