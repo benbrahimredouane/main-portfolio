@@ -1,4 +1,4 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/redouane-profile"
+  "outputDirectory": "dist/redouane-profile/browser"
 }
